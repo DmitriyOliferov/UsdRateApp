@@ -1,9 +1,9 @@
 package com.oliferov.usdrateapp.domain
 
 interface RepositoryUsdRate {
-    fun getUsdRateForToday(): UsdRate
+    suspend fun getUsdRateForToday(): UsdRate
 
-    fun getUsdRateForYesterday(): UsdRate
+    suspend fun getUsdRateForYesterday(): UsdRate
 
-    fun getUsdRatePerMonth(): List<UsdRate>
+    suspend fun getUsdRatePerMonth(dateBeginningMonth: String, dateEndMonth: String): List<UsdRate>
 }
