@@ -13,9 +13,9 @@ class ApiModule {
     @Provides
     @Singleton
     fun provideRetrofit(tikXml: TikXmlConverterFactory): Retrofit {
-        val BASE_URL = "http://cbr.ru/scripts/"
+        val baseUrl = "http://cbr.ru/scripts/"
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(baseUrl)
             .addConverterFactory(tikXml)
             .build()
     }
@@ -31,5 +31,4 @@ class ApiModule {
     fun provideApiService(retrofit: Retrofit): UsdRateApiService{
         return retrofit.create(UsdRateApiService::class.java)
     }
-
 }

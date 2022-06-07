@@ -1,12 +1,16 @@
 package com.oliferov.usdrateapp.data.repository
 
+import com.oliferov.usdrateapp.data.data.UsdRateDao
 import com.oliferov.usdrateapp.data.network.UsdRateApiService
 import com.oliferov.usdrateapp.domain.RepositoryUsdRate
 import com.oliferov.usdrateapp.domain.UsdRate
 import javax.inject.Inject
 
 
-class RepositoryUsdRateImpl @Inject constructor(private val apiService: UsdRateApiService): RepositoryUsdRate {
+class RepositoryUsdRateImpl @Inject constructor(
+    private val apiService: UsdRateApiService,
+    private val usdRateDao: UsdRateDao
+    ): RepositoryUsdRate {
     override suspend fun getUsdRateForToday(): UsdRate {
         TODO("Not yet implemented")
     }
