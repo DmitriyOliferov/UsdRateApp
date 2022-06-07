@@ -5,7 +5,7 @@ import com.tickaroo.tikxml.annotation.PropertyElement
 import com.tickaroo.tikxml.annotation.Xml
 
 @Xml(name = "Record")
-data class UsdDto(
+data class UsdRateDto(
     @Attribute(name = "Date")
     val date: String? = "",
     @Attribute(name = "Id")

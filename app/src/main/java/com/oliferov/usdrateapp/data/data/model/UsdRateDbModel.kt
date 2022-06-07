@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "usd_rate")
 data class UsdRateDbModel(
     @PrimaryKey
-    val date: Int? = -1,
-    val nominal: Int? = -1,
-    val value: Int? = -1
+    val date: String = "-1",
+    val nominal: Int = -1,
+    val value: String = "-1"
 )

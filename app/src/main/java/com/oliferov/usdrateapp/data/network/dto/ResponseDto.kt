@@ -15,5 +15,5 @@ data class ResponseDto(
     @Attribute(name = "name")
     val name: String? = "",
     @Element
-    val arrayDollar: List<UsdDto>? = emptyList()
+    val arrayDollar: List<UsdRateDto>? = emptyList()
 )

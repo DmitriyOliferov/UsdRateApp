@@ -2,6 +2,7 @@ package com.oliferov.usdrateapp.data.network
 
 import com.oliferov.usdrateapp.data.network.dto.ResponseDto
 import kotlinx.coroutines.flow.Flow
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -12,7 +13,7 @@ interface UsdRateApiService {
         @Query(TITLE_DATE_REQ1) date1:String,
         @Query(TITLE_DATE_REQ2) date2:String,
         @Query(TITLE_VAL_NM_RQ) valNmRq:String =  "R01235"
-    ): Flow<ResponseDto>
+    ): Response<ResponseDto>
 
     companion object{
         private const val TITLE_DATE_REQ1 = "date_req1"
