@@ -1,8 +1,8 @@
-package com.oliferov.usdrateapp
+package com.oliferov.usdrateapp.presentation
 
-import android.app.Application
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.oliferov.usdrateapp.R
 
 class MainActivity() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

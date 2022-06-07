@@ -5,10 +5,10 @@ import android.app.Application
 
 class UsdRateApplication: Application() {
 
-    lateinit var appComponent: AppComponent
+    lateinit var component: AppComponent
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.factory().create(this)
+        component = DaggerAppComponent.factory().create(this)
     }
 }

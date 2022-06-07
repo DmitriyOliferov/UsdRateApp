@@ -1,11 +1,16 @@
 package com.oliferov.usdrateapp.di
 
 import com.oliferov.usdrateapp.data.data.mapper.MapperUsdRate
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
+import javax.inject.Singleton
 
 @Module
-interface MapperModule {
-    @Binds
-    fun bindMapper(mapper: MapperUsdRate): MapperUsdRate
+class MapperModule {
+
+    @Provides
+    @Singleton
+    fun providesMapper(): MapperUsdRate{
+        return MapperUsdRate()
+    }
 }

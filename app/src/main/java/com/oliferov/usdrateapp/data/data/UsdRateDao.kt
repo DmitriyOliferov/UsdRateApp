@@ -14,6 +14,6 @@ interface UsdRateDao {
     @Insert(entity = UsdRateDbModel::class, onConflict = OnConflictStrategy.REPLACE)
     fun insertAllUsdRate(usdRate: List<UsdRateDbModel>)
 
-    @Query("DELETE FROM usd_rate WHERE date != (:usdRateDate)")
-    fun deleteAllUsdRate(usdRateDate: List<Int>)
+    @Query("DELETE FROM usd_rate")
+    fun deleteAllUsdRate()
 }

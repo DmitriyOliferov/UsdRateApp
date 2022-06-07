@@ -5,8 +5,9 @@ import com.oliferov.usdrateapp.data.network.dto.UsdRateDto
 import com.oliferov.usdrateapp.domain.UsdRate
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 
-object MapperUsdRate {
+class MapperUsdRate @Inject constructor() {
     fun mapUsdRateDtoListToUsdRateDbModelList(listDto: List<UsdRateDto>): List<UsdRateDbModel> {
         return listDto.map {
             mapUsdRateDtoToUsdRateDbModel(it)
@@ -27,7 +28,7 @@ object MapperUsdRate {
 
     private fun mapUsdRateDbModelToUsdRate(dbModel: UsdRateDbModel) =
         UsdRate(
-            date = converterDateStringToCalendarDate(dbModel.date),
+            date = dbModel.date,
             nominal = dbModel.nominal,
             value = converterValueStringToInt(dbModel.value)
         )
@@ -35,7 +36,7 @@ object MapperUsdRate {
     private fun converterValueStringToInt(value: String) = value
         .split(",")
         .let {
-            "$it[0].$it[1]"
+            "${it[0]}.${it[1]}"
         }
         .toDouble()
 

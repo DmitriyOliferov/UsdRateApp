@@ -12,7 +12,7 @@ object AppDatabaseModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(
+    fun providesDatabase(
         application: Application
     )  = Room.databaseBuilder(
         application,
@@ -22,5 +22,5 @@ object AppDatabaseModule {
 
     @Provides
     @Singleton
-    fun provideDao(db: AppDatabase) = db.getUsdRateDao()
+    fun providesDao(db: AppDatabase) = db.getUsdRateDao()
 }
