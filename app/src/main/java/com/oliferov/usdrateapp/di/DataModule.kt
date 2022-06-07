@@ -2,5 +2,5 @@ package com.oliferov.usdrateapp.di
 
 import dagger.Module
 
-@Module(includes = [ApiModule::class, AppDatabaseModule::class])
+@Module(includes = [ApiModule::class, AppDatabaseModule::class, MapperModule::class])
 interface DataModule
