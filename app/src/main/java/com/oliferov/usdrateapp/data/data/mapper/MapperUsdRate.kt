@@ -30,10 +30,10 @@ class MapperUsdRate @Inject constructor() {
         UsdRate(
             date = dbModel.date,
             nominal = dbModel.nominal,
-            value = converterValueStringToInt(dbModel.value)
+            value = converterValueStringToDouble(dbModel.value)
         )
 
-    private fun converterValueStringToInt(value: String) = value
+    fun converterValueStringToDouble(value: String) = value
         .split(",")
         .let {
             "${it[0]}.${it[1]}"

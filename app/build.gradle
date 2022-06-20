@@ -50,6 +50,9 @@ dependencies {
     kapt 'com.google.dagger:dagger-android-processor:2.38.1'
     implementation 'com.google.dagger:dagger-android-support:2.38.1'
 
+//    compileOnly "com.squareup.inject:assisted-inject-annotations-dagger2:0.5.2"
+//    kapt "com.squareup.inject:assisted-inject-processor-dagger2:0.5.2"
+
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
     implementation 'com.tickaroo.tikxml:annotation:0.8.13'
@@ -60,6 +63,9 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
 
 
+    implementation "androidx.work:work-runtime-ktx:2.7.1"
+    implementation "androidx.work:work-runtime:2.7.1"
+
     implementation("androidx.room:room-runtime:2.4.2")
     kapt("androidx.room:room-compiler:2.4.2")
     implementation("androidx.room:room-ktx:2.4.2")
@@ -68,4 +74,5 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
 
     implementation("androidx.fragment:fragment-ktx:1.4.1")
+
 }

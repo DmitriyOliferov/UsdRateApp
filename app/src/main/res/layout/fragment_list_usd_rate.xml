@@ -11,5 +11,4 @@
         android:id="@+id/rv_list_usd_rate"
         tools:listitem="@layout/item_usd_rate"
         />
-
 </FrameLayout>

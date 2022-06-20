@@ -10,8 +10,8 @@ interface UsdRateApiService {
 
     @GET("XML_dynamic.asp")
     suspend fun getUsdRatePerMonth(
-        @Query(TITLE_DATE_REQ1) date1:String,
-        @Query(TITLE_DATE_REQ2) date2:String,
+        @Query(TITLE_DATE_REQ1) date1:String = "12/04/2021",
+        @Query(TITLE_DATE_REQ2) date2:String = "12/05/2021",
         @Query(TITLE_VAL_NM_RQ) valNmRq:String =  "R01235"
     ): Response<ResponseDto>
 

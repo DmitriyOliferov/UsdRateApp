@@ -8,8 +8,8 @@ interface UsdRateDao {
     @Query("SELECT * FROM usd_rate ORDER BY date")
     fun getAllUsdRate(): List<UsdRateDbModel>
 
-    @Query("SELECT * FROM usd_rate WHERE date == :yesterday OR date == :today ORDER BY date LIMIT 2")
-    fun getUsdRateForTodayAndYesterday(yesterday: Int, today: Int): List<UsdRateDbModel>
+    @Query("SELECT * FROM usd_rate WHERE date == :today ORDER BY date LIMIT 1")
+    fun getUsdRateForToday(today: String): UsdRateDbModel
 
     @Insert(entity = UsdRateDbModel::class, onConflict = OnConflictStrategy.REPLACE)
     fun insertAllUsdRate(usdRate: List<UsdRateDbModel>)
