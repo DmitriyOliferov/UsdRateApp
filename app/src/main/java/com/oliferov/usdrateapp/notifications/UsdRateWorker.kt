@@ -1,5 +1,6 @@
 package com.oliferov.usdrateapp.notifications
 
+import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import android.util.Log
@@ -30,20 +31,28 @@ class UsdRateWorker(
 ) {
     override suspend fun doWork(): Result {
         Log.e("DXDD","DOWORK RESTART")
-//        if (isConnected(context)) {
-//            val rub = inputData.getString(RUB_ID)?.toDouble()
-//            loadData(apiService, dao, mapperUsdRate)
-//            val usdRateForTodayDao = dao.getUsdRateForToday(getCurrentTime())
-//            if(usdRateForTodayDao != null){
-//                Log.e("DXD",usdRateForTodayDao.value)
-//                val currentUsdRate =
-//                    mapperUsdRate.converterValueStringToDouble(usdRateForTodayDao.value)
-//                if (rub != null && rub <= currentUsdRate) {
-//                    createNotification(rub.toString())
-//                    return Result.success()
-//                }
-//            }
-//        }
+        if (isConnected(context)) {
+            Log.e("DXDD","DOWORK isconnected")
+            val rub = inputData.getString(RUB_ID)?.toDouble()
+            Log.e("DXD","PROVERKA $rub")
+            loadData(apiService, dao, mapperUsdRate)
+            val usdRateForTodayDao = dao.getUsdRateForToday(
+                "18.06.2022"
+//                getCurrentTime()
+            )
+            Log.e("DXD","PROVERKA TODAY $usdRateForTodayDao")
+            if(usdRateForTodayDao != null){
+                val currentUsdRate =
+                    mapperUsdRate.converterValueStringToDouble(usdRateForTodayDao.value)
+                Log.e("DXD","PROVERKA TODAYValue  " + currentUsdRate)
+                if (rub != null && rub <= currentUsdRate) {
+
+                    createNotification(rub.toString())
+                    return Result.retry()
+                }
+            }
+        }
+        Log.e("DXDD","DOWORK unconnected")
         return Result.retry()
     }
 
@@ -63,18 +72,15 @@ class UsdRateWorker(
         }
     }
 
-    private suspend fun createNotification(rub: String) {
-        setForeground(
-            ForegroundInfo(
-                Random.nextInt(),
-                NotificationCompat.Builder(context, CHANNEL_ID)
+    private fun createNotification(rub: String) {
+
+               val notif =  NotificationCompat.Builder(context, CHANNEL_ID)
                     .setContentTitle(CONTENT_TITLE)
                     .setContentText(CONTENT_TEXT + rub)
                     .setSmallIcon(R.drawable.ic_launcher_background)
                     .build()
-            )
-        )
-
+        val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        manager.notify(Random.nextInt(),notif)
     }
 
     companion object {
@@ -87,7 +93,7 @@ class UsdRateWorker(
         fun makeRequest(rub: String): PeriodicWorkRequest {
             val data = Data.Builder().putString(RUB_ID, rub).build()
             return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                PeriodicWorkRequestBuilder<UsdRateWorker>(Duration.ofSeconds(10))
+                PeriodicWorkRequestBuilder<UsdRateWorker>(30,TimeUnit.SECONDS)
                     .setConstraints(
                         Constraints.Builder()
                             .setRequiredNetworkType(NetworkType.CONNECTED)
@@ -96,7 +102,7 @@ class UsdRateWorker(
                     .setInputData(data)
                     .build()
             } else {
-                PeriodicWorkRequestBuilder<UsdRateWorker>(10, TimeUnit.SECONDS)
+                PeriodicWorkRequestBuilder<UsdRateWorker>(30, TimeUnit.SECONDS)
                     .setConstraints(
                         Constraints.Builder()
                             .setRequiredNetworkType(NetworkType.CONNECTED)

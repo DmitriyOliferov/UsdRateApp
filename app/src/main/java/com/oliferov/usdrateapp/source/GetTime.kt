@@ -3,7 +3,7 @@ package com.oliferov.usdrateapp.source
 import java.text.SimpleDateFormat
 import java.util.*
 
-suspend fun getCurrentAndPastMonth(): Pair<String, String> {
+fun getCurrentAndPastMonth(): Pair<String, String> {
     val today = Calendar.getInstance()
     val pastMonth = Calendar.getInstance().apply {
         add(Calendar.MONTH, -1)

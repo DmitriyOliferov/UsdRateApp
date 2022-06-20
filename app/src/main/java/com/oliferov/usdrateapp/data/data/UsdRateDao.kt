@@ -5,7 +5,7 @@ import com.oliferov.usdrateapp.data.data.model.UsdRateDbModel
 
 @Dao
 interface UsdRateDao {
-    @Query("SELECT * FROM usd_rate ORDER BY date")
+    @Query("SELECT * FROM usd_rate")
     fun getAllUsdRate(): List<UsdRateDbModel>
 
     @Query("SELECT * FROM usd_rate WHERE date == :today ORDER BY date LIMIT 1")

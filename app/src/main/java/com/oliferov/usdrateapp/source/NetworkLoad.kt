@@ -18,7 +18,11 @@ suspend fun loadData(
     Log.e("DXD", "first Load")
     Log.e("DXD", currentDate.first +" " + currentDate.second)
     val listDto = apiService
-            .getUsdRatePerMonth(date1 = currentDate.first, date2 = currentDate.second)
+            .getUsdRatePerMonth(
+                date1 = currentDate.first,
+                date2 = currentDate.second
+
+            )
             .body()
             ?.arrayDollar
             ?:

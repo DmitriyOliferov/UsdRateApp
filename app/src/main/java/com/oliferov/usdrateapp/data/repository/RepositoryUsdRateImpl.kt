@@ -51,7 +51,7 @@ class RepositoryUsdRateImpl @Inject constructor(
         Log.d("DXD", " LOL out ")
         return mapperUsdRate
             .mapUsdRateDbModelListToUsdRateList(
-                usdRateDao.getAllUsdRate()
+                usdRateDao.getAllUsdRate().reversed()
             )
     }
 }

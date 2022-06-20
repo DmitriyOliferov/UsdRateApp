@@ -42,9 +42,6 @@ class UsdRateListViewModel @Inject constructor(
             Log.d("DXD",usdRateList.value.toString())
             _usdRateList.postValue(getUsdRateList() ?: emptyList())
             Log.d("DXD",usdRateList.value.toString())
-//            withContext(Dispatchers.Main){
-
-//            }
         }
         addNotificationUsdRate()
     }
