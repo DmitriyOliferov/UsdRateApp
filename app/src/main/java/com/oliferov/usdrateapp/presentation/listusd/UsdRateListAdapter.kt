@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.oliferov.usdrateapp.R
 import com.oliferov.usdrateapp.databinding.ItemUsdRateBinding
 import com.oliferov.usdrateapp.domain.UsdRate
 
@@ -22,8 +23,9 @@ class UsdRateListAdapter : ListAdapter<UsdRate, UsdRateListViewHolder>(UsdRateLi
         val usdRate = getItem(position)
         with(usdRate) {
             with(holder.binding) {
-                tvDate.text = date
-                tvValue.text = (value / nominal).toString()
+                tvDate.text = root.context.getString(R.string.date, date)
+                tvValue.text =
+                    root.context.getString(R.string.rate_usd, (value / nominal).toString())
             }
         }
     }

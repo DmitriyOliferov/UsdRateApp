@@ -3,6 +3,7 @@ package com.oliferov.usdrateapp.di
 import android.app.Application
 import android.content.Context
 import com.oliferov.usdrateapp.notifications.UsdRateWorkerFactory
+import com.oliferov.usdrateapp.presentation.listusd.CustomDialog
 import com.oliferov.usdrateapp.presentation.listusd.UsdRateListFragment
 import dagger.Binds
 import dagger.BindsInstance
@@ -28,4 +29,6 @@ interface AppComponent {
     fun inject(application: UsdRateApplication)
 
     fun inject(fragment: UsdRateListFragment)
+
+    fun inject(fragment: CustomDialog)
 }

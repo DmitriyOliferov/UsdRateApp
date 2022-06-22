@@ -2,4 +2,9 @@
     <string name="app_name">UsdRateApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="date">Дата: %s</string>
+    <string name="rate_usd">Курс доллара: %s</string>
+    <string name="download">download</string>
+    <string name="setting">setting</string>
+    <string name="one_usd_rate">1$ =  %sруб</string>
 </resources>
