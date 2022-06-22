@@ -1,7 +1,7 @@
-package com.oliferov.usdrateapp.data.data
+package com.oliferov.usdrateapp.data.database
 
 import androidx.room.*
-import com.oliferov.usdrateapp.data.data.model.UsdRateDbModel
+import com.oliferov.usdrateapp.data.database.model.UsdRateDbModel
 
 @Dao
 interface UsdRateDao {

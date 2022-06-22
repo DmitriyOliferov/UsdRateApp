@@ -13,22 +13,26 @@ class ApiModule {
     @Provides
     @Singleton
     fun provideRetrofit(tikXml: TikXmlConverterFactory): Retrofit {
-        val baseUrl = "http://cbr.ru/scripts/"
+
         return Retrofit.Builder()
-            .baseUrl(baseUrl)
+            .baseUrl(BASE_URL)
             .addConverterFactory(tikXml)
             .build()
     }
 
     @Provides
     @Singleton
-    fun provideTikXml(): TikXmlConverterFactory{
+    fun provideTikXml(): TikXmlConverterFactory {
         return TikXmlConverterFactory.create()
     }
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): UsdRateApiService{
+    fun provideApiService(retrofit: Retrofit): UsdRateApiService {
         return retrofit.create(UsdRateApiService::class.java)
+    }
+
+    companion object{
+        private val BASE_URL = "http://cbr.ru/scripts/"
     }
 }

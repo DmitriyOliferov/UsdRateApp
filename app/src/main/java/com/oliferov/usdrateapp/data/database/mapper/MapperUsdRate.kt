@@ -1,10 +1,8 @@
-package com.oliferov.usdrateapp.data.data.mapper
+package com.oliferov.usdrateapp.data.database.mapper
 
-import com.oliferov.usdrateapp.data.data.model.UsdRateDbModel
+import com.oliferov.usdrateapp.data.database.model.UsdRateDbModel
 import com.oliferov.usdrateapp.data.network.dto.UsdRateDto
 import com.oliferov.usdrateapp.domain.UsdRate
-import java.text.SimpleDateFormat
-import java.util.*
 import javax.inject.Inject
 
 class MapperUsdRate @Inject constructor() {
@@ -39,11 +37,4 @@ class MapperUsdRate @Inject constructor() {
             "${it[0]}.${it[1]}"
         }
         .toDouble()
-
-    private fun converterDateStringToCalendarDate(date: String) =
-        SimpleDateFormat(
-            "dd.MM.yyyy",
-            Locale.ROOT
-        ).parse(date) ?: Date()
-
 }

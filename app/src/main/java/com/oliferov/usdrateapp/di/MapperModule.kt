@@ -1,6 +1,6 @@
 package com.oliferov.usdrateapp.di
 
-import com.oliferov.usdrateapp.data.data.mapper.MapperUsdRate
+import com.oliferov.usdrateapp.data.database.mapper.MapperUsdRate
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

@@ -4,9 +4,8 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import android.util.Log
 
-suspend fun isConnected(context: Context): Boolean {
+fun isConnected(context: Context): Boolean {
     var result = false
     val cM =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -33,6 +32,5 @@ suspend fun isConnected(context: Context): Boolean {
             }
         }
     }
-     Log.d("DXD","CONNECTED" + result.toString())
     return result
 }

@@ -7,13 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
-import com.oliferov.usdrateapp.databinding.FragmentListUsdRateBinding
 import com.oliferov.usdrateapp.databinding.LayoutDialogBinding
 import com.oliferov.usdrateapp.di.UsdRateApplication
 import com.oliferov.usdrateapp.presentation.ViewModelFactory
 import javax.inject.Inject
 
-class CustomDialog: DialogFragment() {
+class CustomDialog : DialogFragment() {
 
     private var _binding: LayoutDialogBinding? = null
     private val binding: LayoutDialogBinding
@@ -32,6 +31,7 @@ class CustomDialog: DialogFragment() {
         component.inject(this)
         super.onAttach(context)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -53,9 +53,12 @@ class CustomDialog: DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this,viewModelFactory)[UsdRateListViewModel::class.java]
-        binding.btnActive.setOnClickListener{
-            if(!binding.etRate.text.isNullOrBlank()) {
+        viewModel = ViewModelProvider(
+            this,
+            viewModelFactory
+        )[UsdRateListViewModel::class.java]
+        binding.btnActive.setOnClickListener {
+            if (!binding.etRate.text.isNullOrBlank()) {
                 viewModel.addNotificationUsdRate(binding.etRate.text.toString())
                 dialog?.dismiss()
             } else {

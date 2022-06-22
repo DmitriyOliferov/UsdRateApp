@@ -2,13 +2,15 @@ package com.oliferov.usdrateapp.di
 
 import android.app.Application
 import androidx.room.Room
-import com.oliferov.usdrateapp.data.data.AppDatabase
+import com.oliferov.usdrateapp.data.database.AppDatabase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
 object DatabaseModule {
+
+    private const val DB_NAME = "UsdRate.db"
 
     @Provides
     @Singleton
@@ -17,7 +19,7 @@ object DatabaseModule {
     )  = Room.databaseBuilder(
         application,
         AppDatabase::class.java,
-        "UsdRate.db"
+        DB_NAME
     ).build()
 
     @Provides

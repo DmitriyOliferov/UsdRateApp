@@ -1,6 +1,5 @@
 package com.oliferov.usdrateapp.di
 
-import androidx.work.ListenableWorker
 import com.oliferov.usdrateapp.notifications.BaseWorkerFactory
 import com.oliferov.usdrateapp.notifications.UsdRateWorker
 import dagger.Binds

@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.data.BarData
@@ -68,22 +67,25 @@ class UsdRateListFragment : Fragment() {
         loadData()
     }
 
-    fun createAdapter(){
-        viewModel = ViewModelProvider(this,viewModelFactory)[UsdRateListViewModel::class.java]
+    fun createAdapter() {
+        viewModel = ViewModelProvider(
+            this,
+            viewModelFactory
+        )[UsdRateListViewModel::class.java]
         binding.rvListUsdRate.adapter = adapterUsdRateList
         binding.rvListUsdRate.layoutManager = LinearLayoutManager(
             requireContext(),
             LinearLayoutManager.VERTICAL,
             false
         )
-        viewModel.usdRateList.observe(viewLifecycleOwner){
+        viewModel.usdRateList.observe(viewLifecycleOwner) {
             adapterUsdRateList.submitList(it)
             createGraph(viewModel.getListForGraph().reversed())
-            binding.tvUsd.text = getString(R.string.one_usd_rate,it.first().value.toString())
+            binding.tvUsd.text = getString(R.string.one_usd_rate, it.first().value.toString())
         }
     }
 
-    private fun createGraph(list: List<BarEntry>){
+    private fun createGraph(list: List<BarEntry>) {
         val barDataSet = BarDataSet(list, "Курс Доллара за месяц")
         barDataSet.colors = ColorTemplate.MATERIAL_COLORS.asList()
         barDataSet.valueTextColor = Color.BLACK
@@ -91,7 +93,7 @@ class UsdRateListFragment : Fragment() {
 
         val barData = BarData(barDataSet)
 
-        with(binding.barChart){
+        with(binding.barChart) {
             setFitBars(true)
             setData(barData)
             description.text = ("Usd rate")
@@ -99,13 +101,13 @@ class UsdRateListFragment : Fragment() {
         }
     }
 
-    private fun setNotification(){
+    private fun setNotification() {
         binding.ivSetting.setOnClickListener {
-            CustomDialog().show(requireActivity().supportFragmentManager,"notification")
+            CustomDialog().show(requireActivity().supportFragmentManager, "notification")
         }
     }
 
-    private fun loadData(){
+    private fun loadData() {
         binding.ivDownload.setOnClickListener {
             viewModel.loadData()
         }

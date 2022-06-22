@@ -13,16 +13,12 @@ class MainActivity() : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         createNotificationChannel()
     }
-
     fun createNotificationChannel(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel =  NotificationChannel("channel_id","Notif Channel",NotificationManager.IMPORTANCE_HIGH)
             channel.description = "DESCRIPTION CHANNEL"
             val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
-        } else {
-
         }
-
     }
 }

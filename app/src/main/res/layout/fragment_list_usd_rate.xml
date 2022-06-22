@@ -57,7 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_setting"
-        android:text="ТЕКУЩИЙ КУРС:" />
+        android:text="@string/current_rate" />
 
     <TextView
         android:id="@+id/tv_usd"
@@ -68,7 +68,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_title"
-        android:text="1$ = 86 P" />
+        tools:text="1$ = 86 P" />
 
     <ImageView
         android:id="@+id/iv_setting"

@@ -1,4 +1,4 @@
-package com.oliferov.usdrateapp.data.data.model
+package com.oliferov.usdrateapp.data.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

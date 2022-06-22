@@ -31,7 +31,9 @@ class UsdRateListAdapter : ListAdapter<UsdRate, UsdRateListViewHolder>(UsdRateLi
     }
 }
 
-class UsdRateListViewHolder(val binding: ItemUsdRateBinding) : RecyclerView.ViewHolder(binding.root)
+class UsdRateListViewHolder(
+    val binding: ItemUsdRateBinding
+) : RecyclerView.ViewHolder(binding.root)
 
 class UsdRateListDiffCallback() : DiffUtil.ItemCallback<UsdRate>() {
     override fun areItemsTheSame(
