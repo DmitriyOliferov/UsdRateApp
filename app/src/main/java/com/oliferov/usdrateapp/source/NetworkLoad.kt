@@ -16,7 +16,6 @@ suspend fun loadData(
         .getUsdRatePerMonth(
             date1 = currentDate.first,
             date2 = currentDate.second
-
         )
         .body()
         ?.arrayDollar

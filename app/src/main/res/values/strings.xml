@@ -12,6 +12,6 @@
     <string name="hint_dialog">Введите значение курса</string>
     <string name="dialog_start_notification">Включить\nУведомление</string>
     <string name="dialog_cancel">Отмена</string>
-    <string name="notification_title">Курс доллара достиг отметки</string>
+    <string name="notification_title">Курс доллара достиг отметки </string>
     <string name="notification_text">На сегодня доллар превысил отметку в </string>
 </resources>

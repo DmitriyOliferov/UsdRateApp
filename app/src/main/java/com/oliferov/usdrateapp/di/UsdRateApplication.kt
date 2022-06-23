@@ -10,7 +10,6 @@ class UsdRateApplication : Application(), Configuration.Provider {
 
     val component: AppComponent by lazy {
         DaggerAppComponent.factory().create(this)
-
     }
 
     @Inject
